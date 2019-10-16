@@ -1,0 +1,17 @@
+<div fxLayout="column" *ngIf="images">
+    <mat-card>
+      <mat-card-title>{{ presentationName }}</mat-card-title>
+      <mat-card-content>
+        <p-carousel [value]="images" numVisible="1">
+          <ng-template let-item pTemplate="item">
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <div fxFlex>
+                <img src="./assets/slides/{{ presentationName }}/{{ item.name }}.jpeg" alt="">
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <button color="accent" mat-button (click)="goToQuiz(presentationName)">Begin Quiz here</button>

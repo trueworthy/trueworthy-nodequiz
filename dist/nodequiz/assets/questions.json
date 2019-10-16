@@ -1,0 +1,801 @@
+[
+    {
+        "quizId": "101",
+        "name": "html-css",
+        "description": "....",
+        "questions": [
+            {
+                "id": "1",
+                "text": "HTML elements are represented by?",
+                "answers": [
+                    {
+                        "id": "1.1",
+                        "text": "<a>",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.2",
+                        "text": "[a]",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.3",
+                        "text": "[tag]",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.4",
+                        "text": "<tag>",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "text": "What does CSS stand for and what is it used for?",
+                "answers": [
+                    {
+                        "id": "2.1",
+                        "text": "Colorful Style Sheets",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.2",
+                        "text": "Cascading Style Sheets",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "2.3",
+                        "text": "Cat Style Sheet",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.4",
+                        "text": "Computer Style Sheet",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "text": "How do you add css to HTML?",
+                "answers": [
+                    {
+                        "id": "3.1",
+                        "text": "Inline",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.2",
+                        "text": "Internal",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.3",
+                        "text": "External",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.4",
+                        "text": "All the Above",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "text": "On a HTML layout page, what is placed on the top of the page?",
+                "answers": [
+                    {
+                        "id": "4.1",
+                        "text": "Header",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "4.2",
+                        "text": "Footer",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "4.3",
+                        "text": "Body",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "4.4",
+                        "text": "None of the above",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "5",
+                "text": "HTML stands for?",
+                "answers": [
+                    {
+                        "id": "5.1",
+                        "text": "Hyper Text Markup Language",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "5.2",
+                        "text": "Home Tool Markup Language",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "5.3",
+                        "text": "Document manual Language",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "5.4",
+                        "text": "Hyper Taco Meal Lunch",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "6",
+                "text": "What is the three-part process of css?",
+                "answers": [
+                    {
+                        "id": "6.1",
+                        "text": "Cats, Cookies, and Quarters",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "6.2",
+                        "text": "Proptery, Color, and Time",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "6.3",
+                        "text": "Selector, Property and value",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "6.4",
+                        "text": "Selector, Number, and Text",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "7",
+                "text": "What are three ways to specify color in CSS?",
+                "answers": [
+                    {
+                        "id": "7.1",
+                        "text": "RGB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "7.2",
+                        "text": "Hex",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "7.3",
+                        "text": "Color name",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "7.4",
+                        "text": "All the above",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "id": "8",
+                "text": "What properties can be used to specify background values?",
+                "answers": [
+                    {
+                        "id": "8.1",
+                        "text": "Sound",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "8.2",
+                        "text": "Background-color, background-image, and background-position",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "8.3",
+                        "text": "Images",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "8.4",
+                        "text": "Fonts and Colors",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "9",
+                "text": "Tags most commonly occur in pairs of ____ and ____ .",
+                "answers": [
+                    {
+                        "id": "9.1",
+                        "text": "First and Second",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "9.2",
+                        "text": "Colors and Fonts",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "9.3",
+                        "text": "Opening and closing",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "9.4",
+                        "text": "Body and Div",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "10",
+                "text": "CSS brings an HTML document to life, by ____. ",
+                "answers": [
+                    {
+                        "id": "10.1",
+                        "text": "Nothing",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "10.2",
+                        "text": "Choosing fonts, applying colors, defining margins, positioning elements, animating interactions, and much more.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "10.3",
+                        "text": "Radio Buttons",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "10.4",
+                        "text": "Fonts and Colors",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "quizId": "102",
+        "name": "javascript",
+        "questions": [
+            {
+                "id": "1",
+                "text": "What is a String?",
+                "answers": [
+                    {
+                        "id": "1.1",
+                        "text": "A character inside single quotes",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.2",
+                        "text": "Cascading Style Sheets",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.3",
+                        "text": "Zero or more characters written inside double or single quotes",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "1.4",
+                        "text": "A delicious meal",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "text": "Before starting Javascript, what is a Prerequisites?",
+                "answers": [
+                    {
+                        "id": "2.1",
+                        "text": "Basic computer literacy, a basic understanding of HTML and CSS.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "2.2",
+                        "text": "A web developer",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.3",
+                        "text": "Milk and cookies",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.4",
+                        "text": "Wordpress",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "text": "What element tags are used to input JavaScript into an HTML file?",
+                "answers": [
+                    {
+                        "id": "3.1",
+                        "text": "<script> and </script>",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "3.2",
+                        "text": "<a> and </a>",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.3",
+                        "text": "<button> and </button>",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.4",
+                        "text": "All the Above",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "text": "What are three kinds of variable declarations in JavaScript?",
+                "answers": [
+                    {
+                        "id": "4.1",
+                        "text": "var",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "4.2",
+                        "text": "let",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "4.3",
+                        "text": "const",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "4.4",
+                        "text": "All the above",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "id": "5",
+                "text": "JavaScript statements are composed of: ",
+                "answers": [
+                    {
+                        "id": "5.1",
+                        "text": "Values and Keywords",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "5.2",
+                        "text": "Keywords, Values and Numbers",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "5.3",
+                        "text": "Values, Operators, Expressions, Keywords, and Comments",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "5.4",
+                        "text": "Operators and cat memes",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "6",
+                "text": "A multi-line comment is written between what strings?",
+                "answers": [
+                    {
+                        "id": "6.1",
+                        "text": "/* and */",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "6.2",
+                        "text": " */* and */*",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "6.3",
+                        "text": "//",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "6.4",
+                        "text": " /* ",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "7",
+                "text": "The console.log() is useful for?",
+                "answers": [
+                    {
+                        "id": "7.1",
+                        "text": "Nothing",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "7.2",
+                        "text": "Testing purposes",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "7.3",
+                        "text": "Displaying videos",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "7.4",
+                        "text": "Displaying HTML",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "8",
+                "text": "Names can contain a mix of ?",
+                "answers": [
+                    {
+                        "id": "8.1",
+                        "text": "Uppercase strings, lowercase strings, and numbers.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "8.2",
+                        "text": "Letters and Numbers",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "8.3",
+                        "text": "Images",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "8.4",
+                        "text": "Symbols and Numbers",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "9",
+                "text": "Out of the six data types, which variable is define as True or False?",
+                "answers": [
+                    {
+                        "id": "9.1",
+                        "text": "Boolean",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "9.2",
+                        "text": "null",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "9.3",
+                        "text": "string",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "9.4",
+                        "text": "Numbers",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "10",
+                "text": "Why use the JavaScript language? ",
+                "answers": [
+                    {
+                        "id": "10.1",
+                        "text": "Nothing",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "10.2",
+                        "text": "It was already insatlled",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "10.3",
+                        "text": "Because I was told too",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "10.4",
+                        "text": "None of the above",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "quizId": "103",
+        "name": "node",
+        "questions": [
+            {
+                "id": "1",
+                "text": "How much does node cost?",
+                "answers": [
+                    {
+                        "id": "1.1",
+                        "text": "Free",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "1.2",
+                        "text": "$99",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.3",
+                        "text": "$5.99",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.4",
+                        "text": "$1,000,000",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "text": "Node.js is ____.",
+                "answers": [
+                    {
+                        "id": "2.1",
+                        "text": "I don't know.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.2",
+                        "text": "An open source network",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.3",
+                        "text": "An open source, cross-platform runtime environment for developing server-side and networking applications.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "2.4",
+                        "text": "Wordpress",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "text": "A Node.js application consists of what three important components?",
+                "answers": [
+                    {
+                        "id": "3.1",
+                        "text": "Import required modules",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.2",
+                        "text": "Create server",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.3",
+                        "text": "Read request and return response ",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "3.4",
+                        "text": "All the Above",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "text": "It is not advisable to use Node.js for?",
+                "answers": [
+                    {
+                        "id": "4.1",
+                        "text": "CPU intensive applications",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "4.2",
+                        "text": "Everything",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "4.3",
+                        "text": "Nothing",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "4.4",
+                        "text": "Wordpress",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "5",
+                "text": "REPL stands for?",
+                "answers": [
+                    {
+                        "id": "5.1",
+                        "text": "Write Print Loop",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "5.2",
+                        "text": "Read Expressive Print Land",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "5.3",
+                        "text": "Read Eval Print Loop",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "5.4",
+                        "text": "Loop",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "6",
+                "text": "Some attributes of package.json include?",
+                "answers": [
+                    {
+                        "id": "6.1",
+                        "text": "Name and version",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "6.2",
+                        "text": " HTML",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "6.3",
+                        "text": "Name, version and repository",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "6.4",
+                        "text": "Respository and Version ",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "7",
+                "text": "what does ‘-g’ mean when included in a node installation?",
+                "answers": [
+                    {
+                        "id": "7.1",
+                        "text": "Install Go",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "7.2",
+                        "text": "Install globally",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "7.3",
+                        "text": "Install Get",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "7.4",
+                        "text": "Install Github",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "8",
+                "text": "Who uses node.js?",
+                "answers": [
+                    {
+                        "id": "8.1",
+                        "text": "Developers",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "8.2",
+                        "text": "Large Coorporations",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "8.3",
+                        "text": "Wordpress",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "8.4",
+                        "text": "Everyone",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "id": "9",
+                "text": "What does the command npm ls do?",
+                "answers": [
+                    {
+                        "id": "9.1",
+                        "text": "Nothing",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "9.2",
+                        "text": "null",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "9.3",
+                        "text": "List installed modules",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "9.4",
+                        "text": "List available modules",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "10",
+                "text": "What systems can Node.js be installed on? ",
+                "answers": [
+                    {
+                        "id": "10.1",
+                        "text": "Both Mac and Windows",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "10.2",
+                        "text": "Mac",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "10.3",
+                        "text": "Windows",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "10.4",
+                        "text": "None of the above",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    }
+]

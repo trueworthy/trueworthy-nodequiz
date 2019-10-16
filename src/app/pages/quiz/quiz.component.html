@@ -1,0 +1,65 @@
+<div fxLayout="column">
+    <!-- root mat card -->
+    <mat-card fxFlex style="width: 50%; margin: 0 auto; margin-top: 5%;" class="mat-elevation-z8">
+        <mat-card-title style="text-align: center; font-weight: lighter;" class="mat-headline">
+            {{ quiz.name }}
+        </mat-card-title>
+
+        <br />
+        <!-- root mat card content -->
+        <mat-card-content *ngIf="questions">
+            <!-- flex-layout column -->
+            <div fxLayout="column">
+
+                <!-- Quiz form -->
+                <form #form="ngForm" (ngSubmit)="onSubmit(form.value); ">
+                    <div *ngFor="let question of questions">
+                        <mat-card class="mat-elevation-z0">
+                            <mat-card-content>
+
+                                <div fxLayout="column">
+                                    <!-- questions -->
+                                    <mat-list>
+                                        <div fxLayout="row" fxLayoutGap="10px">
+
+                                            <p>{{question.text}}</p>
+                                        </div>
+                                    </mat-list>
+                                    <br />
+
+                                    <!-- answers -->
+                                    <div fxLayout="row" fxLayoutGap="10px">
+                                        <label>Answers:</label>
+                                        <div fxLayout="column" fxLayoutGap="10px">
+                                            <div *ngFor="let answer of question.answers"
+                                                style="flex-direction: column;">
+                                                <input [(ngModel)]="qs[question.id]" [checked]="qs[question.id]"
+                                                    value="{{answer.id}};{{answer.isCorrect}}" name="q{{question.id}}"
+                                                    type="radio" />
+                                                {{answer.text}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+
+                    <!-- mat card actions -->
+                    <br />
+                    <mat-card-actions>
+                        <button type="submit" fxFlex mat-raised-button color="primary">Submit</button>
+                    </mat-card-actions>
+                    <br />
+                </form>
+                <!-- end form -->
+
+            </div>
+            <!-- end flex-layout column -->
+        </mat-card-content>
+        <!-- end root mat card content -->
+    </mat-card>
+
+    <div>
+        <button color="accent" mat-button (click)="goBack()">Back</button>
+    </div>

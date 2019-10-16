@@ -1,0 +1,10 @@
+input[type="radio"]{
+    vertical-align: top;
+}
+
+#title{
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 30px !important;
+
+}

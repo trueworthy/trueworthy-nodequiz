@@ -1,0 +1,27 @@
+html {width: 100%;}
+
+.row {
+    padding-top: 30px;
+    display: flex;
+  }
+  
+  /* Create three equal columns that sits next to each other */
+  .column {
+    flex: 33.33%;
+    padding: 5px;
+  }
+
+  .column button{
+    padding: 3px;
+  }
+
+  .row button{
+    width: 40%;
+
+  }
+
+  button{
+    width: 100%  !important;
+    font-size: 18px !important;
+    text-align: center  !important;
+}
