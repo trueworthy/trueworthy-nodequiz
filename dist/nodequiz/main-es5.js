@@ -1324,7 +1324,7 @@ var HeaderComponent = /** @class */ (function () {
 /*!*********************************!*\
   !*** ./src/app/shared/index.ts ***!
   \*********************************/
-/*! exports provided: BaseLayoutComponent, ResultsComponent, AuthLayoutComponent, DashboardComponent, LoginComponent, CumulativeSummaryComponent, NotFoundComponent */
+/*! exports provided: BaseLayoutComponent, AuthLayoutComponent, DashboardComponent, LoginComponent, CumulativeSummaryComponent, NotFoundComponent, ResultsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

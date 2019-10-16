@@ -23,7 +23,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/nodequiz')));
 app.use('/', express.static(path.join(__dirname, '../dist/nodequiz')));
 
-const serverPort = process.env.PORT || 3000, //server port or 3000
+const serverPort = process.env.PORT || 3000; //server port or 3000
 //const serverPort = 3000; // port the application listens on
 
 // MongoDB (mLab) connection string
