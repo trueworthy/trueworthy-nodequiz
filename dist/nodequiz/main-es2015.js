@@ -677,7 +677,7 @@ const AppRoutes = [
                 canActivate: [_shared_guards_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]]
             },
             {
-                path: 'results/:id',
+                path: 'result/:id',
                 component: _pages_results_results_component__WEBPACK_IMPORTED_MODULE_9__["ResultsComponent"],
                 canActivate: [_shared_guards_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]]
             },
@@ -1207,22 +1207,17 @@ let QuizComponent = class QuizComponent {
         this.quizResults = form;
         this.quizResults['employeeId'] = this.employeeId;
         this.quizResults['quizId'] = this.quizId;
-        console.log('form ' + form);
+        //console.log('form ' + form);
         // save quiz results to database
-        this.http.post('/api/results/', {
+        this.http.post('/api/result/', {
             employeeId: this.employeeId,
             quizId: this.quizId,
-            result: JSON.stringify(form)
-        }).subscribe(err => {
+            quizResults: JSON.stringify(form)
+        }).subscribe(res => {
+        }, err => {
             console.log(err);
         }, () => {
-            /**
-             * 2. loop over the quizResults properties
-             */
             for (const prop in this.quizResults) {
-                /**
-                 * We need to check if hasOwnProperty to avoid returning null values
-                 */
                 if (this.quizResults.hasOwnProperty(prop)) {
                     /**
                      * Once we are inside the object's properties we need to extract the properties not matching quizId and employeeId
@@ -1233,23 +1228,14 @@ let QuizComponent = class QuizComponent {
                     }
                 }
             }
-            let correctAnswers = [];
-            let selectedAnswers = [];
-            // 3. determine the quiz score
-            for (let i = 0; i < selectedAnswerIds.length; i++) {
-                for (let x = 0; x < correctAnswers.length; x++) {
-                    if (selectedAnswerIds[i] === correctAnswers[x]) {
-                        correctRunningTotal += 1;
-                        console.log('selectedAnswers: ' + selectedAnswerIds[i] + ' correctAnswers: ' + correctAnswers[x] +
-                            ' correctRunningTotal: ' + correctRunningTotal);
-                    }
+            for (let x = 0; x < selectedisCorrectProp.length; x++) {
+                if (selectedisCorrectProp[x] === 'true') {
+                    correctRunningTotal += 1;
                 }
             }
-            //console.log('correctRunningTotal: ' + correctRunningTotal);
             quizScore = correctRunningTotal * pointsPerQuestions;
-            /**
-             * 4. Create the QuizSummary object for the dialog
-             */
+            let correctAnswers = [];
+            let selectedAnswers = [];
             /**
              * Loop over the quiz.questions to get the selected answer and correct answer for each question
              */
@@ -1299,7 +1285,7 @@ let QuizComponent = class QuizComponent {
                 quizName: this.cumulativeSummary['quizName'],
                 dateTaken: this.cumulativeSummary['dateTaken'],
                 score: this.cumulativeSummary['score']
-            }).subscribe(res => {
+            }).subscribe(r => {
             }, err => {
                 console.log(err);
             }, () => {

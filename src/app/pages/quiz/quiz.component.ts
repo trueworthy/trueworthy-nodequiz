@@ -22,7 +22,7 @@ import { ResultsComponent } from '../results/results.component';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  quizId: any;
+  quizId: string;
   quizzes: any;
   quiz: any;
   questions: any;
@@ -37,7 +37,8 @@ export class QuizComponent implements OnInit {
   employeeId: number;
 
 
-  constructor(private route: ActivatedRoute, private cookieService: CookieService, private location: Location, private dialog: MatDialog, private http: HttpClient, private quizService: QuizService, private router: Router) {
+  constructor(private route: ActivatedRoute, private cookieService: CookieService, private location: Location, 
+    private dialog: MatDialog, private http: HttpClient, private quizService: QuizService, private router: Router) {
     this.quizId = (this.route.snapshot.paramMap.get('id'))
     this.quiz = parseInt(this.route.snapshot.paramMap.get("id"))
     this.employeeId = parseInt(this.cookieService.get('employeeId'))
@@ -85,25 +86,22 @@ export class QuizComponent implements OnInit {
     this.quizResults = form;
     this.quizResults['employeeId'] = this.employeeId;
     this.quizResults['quizId'] = this.quizId;
-    console.log('form ' + form);
+    //console.log('form ' + form);
 
 
     // save quiz results to database
-    this.http.post('/api/results/', {
+    this.http.post('/api/result/', {
       employeeId: this.employeeId,
       quizId: this.quizId,
-      result: JSON.stringify(form)
-    }).subscribe(
+      quizResults: JSON.stringify(form)
+    }).subscribe( res => {
+
+    },
       err => {
       console.log(err);
     }, () => {
-      /**
-       * 2. loop over the quizResults properties
-       */
+
       for (const prop in this.quizResults) {
-        /**
-         * We need to check if hasOwnProperty to avoid returning null values
-         */
         if (this.quizResults.hasOwnProperty(prop)) {
 
           /**
@@ -116,32 +114,15 @@ export class QuizComponent implements OnInit {
         }
       }
 
-       let correctAnswers = [];
-      let selectedAnswers = [];
-
-      // 3. determine the quiz score
-      for(let i = 0; i < selectedAnswerIds.length; i++){
-
-        for(let x = 0; x < correctAnswers.length; x++){
-  
-          if( selectedAnswerIds[i] === correctAnswers[x]){
-  
-            correctRunningTotal += 1;
-            console.log('selectedAnswers: ' + selectedAnswerIds[i] + ' correctAnswers: ' + correctAnswers[x] +
-             ' correctRunningTotal: ' + correctRunningTotal);
-  
-          }
+      for (let x = 0; x < selectedisCorrectProp.length; x++) {
+        if (selectedisCorrectProp[x] === 'true') {
+          correctRunningTotal += 1;
         }
-  
       }
-  
-      //console.log('correctRunningTotal: ' + correctRunningTotal);
       quizScore = correctRunningTotal * pointsPerQuestions;
 
-      /**
-       * 4. Create the QuizSummary object for the dialog
-       */
-
+      let correctAnswers = [];
+      let selectedAnswers = [];
 
       /**
        * Loop over the quiz.questions to get the selected answer and correct answer for each question
@@ -196,10 +177,9 @@ export class QuizComponent implements OnInit {
         quizName: this.cumulativeSummary['quizName'],
         dateTaken: this.cumulativeSummary['dateTaken'],
         score: this.cumulativeSummary['score']
-      }).subscribe(
-        res =>{
-  
-        },
+      }).subscribe( r => {
+        
+      },
         err => {
         console.log(err);
       }, () => {

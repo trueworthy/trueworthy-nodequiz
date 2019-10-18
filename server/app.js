@@ -12,7 +12,7 @@ const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 const Quiz = require('./models/quizzes');
-const quizResults = require('./models/quiz-results');
+const result = require('./models/quiz-results');
 const Summary = require('./models/cumulative-summary')
 
 let app = express();
@@ -89,20 +89,51 @@ app.get('/api/employees/:id', function (req, res, next) {
 
 var User = mongoose.model("User", userSchema);*/
 //Create Quiz Result
-
-app.post('/api/results', function(req, res, next) {
-  const result = {
-    employeeId: req.body.employeeId,
-    quizId: req.body.quizId,
-    result: req.body.result
+app.post('/api/quizzes', function(req, res, next) {
+  const quiz = {
+    quizId: req.body.employeeId,
+    quizName: req.body.quizName,
+    cumulativeScore: req.body.cumulativeScore
   };
 
-  quizResults.create(quizResults, function(err, result) {
+  Quiz.create(quiz, function(err, quizzes) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log(result);
+      console.log(quizzes);
+      res.json(quizzes);
+    }
+  });
+});
+
+//Get Quiz by Id
+app.get('/api/quizzes/:id', function(req, res, next) {
+  Quiz.findOne({'quizId': req.params.id}, function(err, quiz) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }  else {
+      console.log(quiz);
+      res.json(quiz);
+    }
+  })
+});
+
+
+app.post('/api/result', function(req, res, next) {
+  const result = {
+    employeeId: req.body.employeeId,
+    quizId: req.body.quizId,
+    quizResults: req.body.quizResults
+  };
+
+  result.create(result, function(err, result) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      //console.log(result);
       res.json(result);
     }
   });
@@ -111,7 +142,7 @@ app.post('/api/results', function(req, res, next) {
 
 /************************ Summary API ************************ */
 //Create Summary Result
-app.post('/api/summary', function(req, res, next) {
+/*app.post('/api/summary', function(req, res, next) {
   const summary = {
     employeeId: req.body.employeeId,
     quizId: req.body.quizId,
@@ -131,7 +162,7 @@ app.post('/api/summary', function(req, res, next) {
   });
 });
 
-
+*/
 //Get all Quizzes
 app.get('/api/summary/all', function(req, res, next) {
   Summary.find(function(err, summary) {

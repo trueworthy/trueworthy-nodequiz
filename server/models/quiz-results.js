@@ -5,13 +5,13 @@
 
 const mongoose = require('mongoose');
 
-let quizResultsSchema = mongoose.Schema({
+let resultSchema = mongoose.Schema({
   quizId: String,
   quizName: String,
-  results: String
+  result: String
 })
 
-module.exports = mongoose.model('quizResults', quizResultsSchema);
+module.exports = mongoose.model('result', resultSchema);
 /*
 const mongoose = require('mongoose');
 

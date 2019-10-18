@@ -681,7 +681,7 @@ var AppRoutes = [
                 canActivate: [_shared_guards_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]]
             },
             {
-                path: 'results/:id',
+                path: 'result/:id',
                 component: _pages_results_results_component__WEBPACK_IMPORTED_MODULE_9__["ResultsComponent"],
                 canActivate: [_shared_guards_auth_guard__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]]
             },
@@ -1222,23 +1222,18 @@ var QuizComponent = /** @class */ (function () {
         this.quizResults = form;
         this.quizResults['employeeId'] = this.employeeId;
         this.quizResults['quizId'] = this.quizId;
-        console.log('form ' + form);
+        //console.log('form ' + form);
         // save quiz results to database
-        this.http.post('/api/results/', {
+        this.http.post('/api/result/', {
             employeeId: this.employeeId,
             quizId: this.quizId,
-            result: JSON.stringify(form)
-        }).subscribe(function (err) {
+            quizResults: JSON.stringify(form)
+        }).subscribe(function (res) {
+        }, function (err) {
             console.log(err);
         }, function () {
             var e_1, _a, e_2, _b;
-            /**
-             * 2. loop over the quizResults properties
-             */
             for (var prop in _this.quizResults) {
-                /**
-                 * We need to check if hasOwnProperty to avoid returning null values
-                 */
                 if (_this.quizResults.hasOwnProperty(prop)) {
                     /**
                      * Once we are inside the object's properties we need to extract the properties not matching quizId and employeeId
@@ -1249,24 +1244,15 @@ var QuizComponent = /** @class */ (function () {
                     }
                 }
             }
-            var correctAnswers = [];
-            var selectedAnswers = [];
-            // 3. determine the quiz score
-            for (var i = 0; i < selectedAnswerIds.length; i++) {
-                for (var x = 0; x < correctAnswers.length; x++) {
-                    if (selectedAnswerIds[i] === correctAnswers[x]) {
-                        correctRunningTotal += 1;
-                        console.log('selectedAnswers: ' + selectedAnswerIds[i] + ' correctAnswers: ' + correctAnswers[x] +
-                            ' correctRunningTotal: ' + correctRunningTotal);
-                    }
+            for (var x = 0; x < selectedisCorrectProp.length; x++) {
+                if (selectedisCorrectProp[x] === 'true') {
+                    correctRunningTotal += 1;
                 }
             }
-            //console.log('correctRunningTotal: ' + correctRunningTotal);
             quizScore = correctRunningTotal * pointsPerQuestions;
+            var correctAnswers = [];
+            var selectedAnswers = [];
             try {
-                /**
-                 * 4. Create the QuizSummary object for the dialog
-                 */
                 /**
                  * Loop over the quiz.questions to get the selected answer and correct answer for each question
                  */
@@ -1335,7 +1321,7 @@ var QuizComponent = /** @class */ (function () {
                 quizName: _this.cumulativeSummary['quizName'],
                 dateTaken: _this.cumulativeSummary['dateTaken'],
                 score: _this.cumulativeSummary['score']
-            }).subscribe(function (res) {
+            }).subscribe(function (r) {
             }, function (err) {
                 console.log(err);
             }, function () {

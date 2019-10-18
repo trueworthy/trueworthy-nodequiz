@@ -20,7 +20,8 @@ export class ResultsComponent implements OnInit {
   selectedAnswers: any;
   employeeId: string;
 
-  constructor(private dialogRef: MatDialogRef<ResultsComponent>, @Inject(MAT_DIALOG_DATA) data, private cookieService: CookieService) {
+  constructor(private dialogRef: MatDialogRef<ResultsComponent>, @Inject(MAT_DIALOG_DATA) data, 
+  private cookieService: CookieService) {
     this.quizSummary = data.quizSummary;
     console.log(data);
     this.correctAnswers = this.quizSummary.correctAnswers;
