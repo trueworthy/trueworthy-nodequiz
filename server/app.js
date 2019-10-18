@@ -12,7 +12,7 @@ const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 const Quiz = require('./models/quizzes');
-const result = require('./models/quiz-results');
+const quizResults = require('./models/quiz-results');
 const Summary = require('./models/cumulative-summary')
 
 let app = express();
@@ -89,14 +89,14 @@ app.get('/api/employees/:id', function (req, res, next) {
 
 var User = mongoose.model("User", userSchema);*/
 //Create Quiz Result
-app.post('/api/quizzes', function(req, res, next) {
+app.post('/api/quizzes', function (req, res, next) {
   const quiz = {
     quizId: req.body.employeeId,
     quizName: req.body.quizName,
     cumulativeScore: req.body.cumulativeScore
   };
 
-  Quiz.create(quiz, function(err, quizzes) {
+  Quiz.create(quiz, function (err, quizzes) {
     if (err) {
       console.log(err);
       return next(err);
@@ -108,12 +108,12 @@ app.post('/api/quizzes', function(req, res, next) {
 });
 
 //Get Quiz by Id
-app.get('/api/quizzes/:id', function(req, res, next) {
-  Quiz.findOne({'quizId': req.params.id}, function(err, quiz) {
+app.get('/api/quizzes/:id', function (req, res, next) {
+  Quiz.findOne({ 'quizId': req.params.id }, function (err, quiz) {
     if (err) {
       console.log(err);
       return next(err);
-    }  else {
+    } else {
       console.log(quiz);
       res.json(quiz);
     }
@@ -121,14 +121,14 @@ app.get('/api/quizzes/:id', function(req, res, next) {
 });
 
 
-app.post('/api/result', function(req, res, next) {
-  const result = {
+app.post('/api/result', function (req, res, next) {
+  const quizResults = {
     employeeId: req.body.employeeId,
     quizId: req.body.quizId,
     quizResults: req.body.quizResults
   };
 
-  result.create(result, function(err, result) {
+  quizResults.create(result, function (err, result) {
     if (err) {
       console.log(err);
       return next(err);
@@ -164,12 +164,12 @@ app.post('/api/result', function(req, res, next) {
 
 */
 //Get all Quizzes
-app.get('/api/summary/all', function(req, res, next) {
-  Summary.find(function(err, summary) {
+app.get('/api/summary/all', function (req, res, next) {
+  Summary.find(function (err, summary) {
     if (err) {
       console.log(err);
       return next(err);
-    }  else {
+    } else {
       console.log(summary);
       res.json(summary);
     }
