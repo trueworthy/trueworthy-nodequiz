@@ -1,1 +1,66 @@
-<p>quiz-summary-dialog works!</p>
+<mat-dialog-content>
+        <div fxLayout="column">
+          <mat-card class="mat-elevation-z0">
+            <mat-card-title style="font-weight: lighter; text-align: center;">
+                {{quizSummary.quizName}}
+            </mat-card-title>
+            <mat-card-subtitle style="font-weight: lighter; text-align: center;">
+                Displaying Quiz Results for Employee: {{employeeId}}
+            </mat-card-subtitle>
+            <br />
+            <mat-card-content>
+              <mat-card class="mat-elevation-z8">
+                <div fxLayout="column" fxLayoutGap="10px">
+                  <mat-card-title style="text-align: center; font-weight: bold;">
+                    Score
+                    <div *ngIf="quizSummary.score > 90">
+                      <span style="color: green;">{{quizSummary.score}}%</span>
+                    </div>
+                    <div *ngIf="quizSummary.score < 90 && quizSummary.score >= 80">
+                      <span style="color: blue;">{{quizSummary.score}}%</span>
+                    </div>
+                    <div *ngIf="quizSummary.score < 80 && quizSummary.score >= 70">
+                      <span style="color: orange;">{{quizSummary.score}}%</span>
+                    </div>
+                    <div *ngIf="quizSummary.score < 70 && quizSummary.score >= 60">
+                      <span style="color: yellow;">{{quizSummary.score}}%</span>
+                    </div>
+                    <div *ngIf="quizSummary.score < 60">
+                      <span style="color: red;">{{quizSummary.score}}%</span>
+                    </div>
+                  </mat-card-title>
+                </div>
+              </mat-card>
+                
+              <br />
+              <mat-card class="mat-elevation-z0">
+                <mat-card-content>
+                  <div fxLayout="column" fxLayoutGap="10px" *ngFor="let answer of correctAnswers; let i = index">
+                    <div *ngIf="selectedAnswers[i].answerId !== answer.answerId">
+  
+                      <!-- questions -->
+                      <mat-list>
+                        <div fxLayout="row" fxLayoutGap="10px">
+                          <p>Question: </p>
+                          <p>{{answer.questionText}}</p>
+                        </div>
+                      </mat-list>
+                      <br />
+  
+                      <!-- answer summary -->
+                      <label>Answers:</label>
+                      <p><mat-icon style="color: red; vertical-align: bottom">clear</mat-icon> &nbsp; Selected answer: {{ selectedAnswers[i].text}}</p>
+                      <p><mat-icon style="color: green; vertical-align: bottom">done</mat-icon>&nbsp; Correct answer: {{ answer.text}}</p>
+                    </div>
+                  </div>    
+                </mat-card-content>
+                    
+              </mat-card>  
+              
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-raised-button matDialogClose="confirm" color="primary">Confirm</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-dialog-content>

@@ -12,7 +12,8 @@ const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 const Quiz = require('./models/quizzes');
-const quizResults = require('./models/quiz-results')
+const quizResults = require('./models/quiz-results');
+const Summary = require('./models/cumulative-summary')
 
 let app = express();
 
@@ -88,13 +89,62 @@ app.get('/api/employees/:id', function (req, res, next) {
 
 var User = mongoose.model("User", userSchema);*/
 //Create Quiz Result
+
 app.post('/api/results', function(req, res, next) {
-  const quizResults = {
+  const result = {
     employeeId: req.body.employeeId,
     quizId: req.body.quizId,
     result: req.body.result
   };
-})
+
+  quizResults.create(quizResults, function(err, result) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(result);
+      res.json(result);
+    }
+  });
+});
+
+
+/************************ Summary API ************************ */
+//Create Summary Result
+app.post('/api/summary', function(req, res, next) {
+  const summary = {
+    employeeId: req.body.employeeId,
+    quizId: req.body.quizId,
+    quizName: req.body.quizName,
+    dateTaken: req.body.dateTaken,
+    score: req.body.score
+  };
+
+  Summary.create(summary, function(err, summary) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(summary);
+      res.json(summary);
+    }
+  });
+});
+
+
+//Get all Quizzes
+app.get('/api/summary/all', function(req, res, next) {
+  Summary.find(function(err, summary) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }  else {
+      console.log(summary);
+      res.json(summary);
+    }
+  })
+});
+
 
 /**
  * Creates an express server and listens on port 3000

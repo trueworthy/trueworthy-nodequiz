@@ -11,8 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$trueworthy-output-properties-primary:  mat-palette($mat-red, A700);
-$accent: mat-palette($mat-cyan, 500);
+$trueworthy-output-properties-primary:  mat-palette($mat-pink, 50);
+$accent: mat-palette($mat-cyan, 900);
 
 // The warn palette is optional (defaults to red).
 $trueworthy-output-properties-warn: mat-palette($mat-deep-orange);

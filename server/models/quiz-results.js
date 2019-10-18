@@ -8,25 +8,10 @@ const mongoose = require('mongoose');
 let quizResultsSchema = mongoose.Schema({
   quizId: String,
   quizName: String,
-  quizDescription: String,
-  questions: [
-    {
-      id: Number,
-      text: String,
-      answers: [
-        {
-          id: Number,
-          answerText: { type: String },
-          isCorrect: { type: Boolean }
-        }
+  results: String
+})
 
-      ]
-    }
-  ]
-}
-)
-
-module.exports = mongoose.model('quizResultsSchema', quizResultsSchema);
+module.exports = mongoose.model('quizResults', quizResultsSchema);
 /*
 const mongoose = require('mongoose');
 

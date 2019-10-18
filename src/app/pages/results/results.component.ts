@@ -3,7 +3,7 @@
  * Description: employee results from quiz
  */
 
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { QuizComponent } from "../quiz/quiz.component";
 import { Router } from "@angular/router";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
@@ -15,20 +15,20 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ["../results/results.component.css"]
 })
 export class ResultsComponent implements OnInit {
+  quizSummary: any;
+  correctAnswers: any;
+  selectedAnswers: any;
   employeeId: string;
 
-  // resultsDisplay: any;
-
-  constructor(
-    private dialogRef: MatDialogRef<QuizComponent>, private router: Router, private cookieService: CookieService, ) {
+  constructor(private dialogRef: MatDialogRef<ResultsComponent>, @Inject(MAT_DIALOG_DATA) data, private cookieService: CookieService) {
+    this.quizSummary = data.quizSummary;
+    console.log(data);
+    this.correctAnswers = this.quizSummary.correctAnswers;
+    this.selectedAnswers = this.quizSummary.selectedAnswers;
     this.employeeId = this.cookieService.get('employeeId');
-    console.log(this.employeeId + ' results employee')
-
   }
-
-  @Input() public quizResults;
 
   ngOnInit() {
-    console.log(this.quizResults);
   }
+
 }
