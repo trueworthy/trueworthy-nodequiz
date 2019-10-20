@@ -2,7 +2,7 @@
     <!-- root mat card -->
     <mat-card fxFlex style="width: 50%; margin: 0 auto; margin-top: 5%;" class="mat-elevation-z8">
         <mat-card-title style="text-align: center; font-weight: lighter;" class="mat-headline">
-            {{ quiz.name }}
+                {{ presentationName }}
         </mat-card-title>
 
         <br />
@@ -12,7 +12,7 @@
             <div fxLayout="column">
 
                 <!-- Quiz form -->
-                <form #quizForm="ngForm" (ngSubmit)="onSubmit(quizForm.value); quizForm.reset();">
+                <form #form="ngForm" (ngSubmit)="onSubmit(form.value); form.reset();">
                         <div *ngFor="let question of questions">
                         <mat-card class="mat-elevation-z0">
                             <mat-card-content>

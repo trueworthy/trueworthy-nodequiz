@@ -22,14 +22,14 @@ import { ResultsComponent } from '../results/results.component';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  quizId: string;
+  quizId: any;
   quizzes: any;
   quiz: any;
   questions: any;
   //quizName: string;
   answers: string;
   quizNameFromUrl: string;
-  quizResults: any;
+  results: any;
   q: any = [];
   qs: any = [];
   cumulativeSummary: {};
@@ -84,33 +84,33 @@ export class QuizComponent implements OnInit {
 
     // FORM
 
-    this.quizResults = form;
-    this.quizResults['employeeId'] = this.employeeId;
-    this.quizResults['quizId'] = this.quizId;
+    this.results = form;
+    this.results['employeeId'] = this.employeeId;
+    this.results['quizId'] = this.quizId;
     //console.log('form ' + form);
 
 
     // save quiz results to database
-    this.http.post('/api/results/', {
+   /* this.http.post('/api/results/', {
       employeeId: this.employeeId,
       quizId: this.quizId,
-      quizResults: JSON.stringify(form)
+      results: JSON.stringify(form)
     }).subscribe( res => {
 
     },
       err => {
       console.log(err);
     }, () => {
-
-      for (const prop in this.quizResults) {
-        if (this.quizResults.hasOwnProperty(prop)) {
+*/
+      for (const prop in this.results) {
+        if (this.results.hasOwnProperty(prop)) {
 
           /**
            * Once we are inside the object's properties we need to extract the properties not matching quizId and employeeId
            */
           if (prop !== 'employeeId' && prop !== 'quizId') {
-            selectedAnswerIds.push(this.quizResults[prop].split(';')[0]);
-            selectedisCorrectProp.push(this.quizResults[prop].split(';')[1]);
+            selectedAnswerIds.push(this.results[prop].split(';')[0]);
+            selectedisCorrectProp.push(this.results[prop].split(';')[1]);
           }
         }
       }
@@ -128,14 +128,13 @@ export class QuizComponent implements OnInit {
       /**
        * Loop over the quiz.questions to get the selected answer and correct answer for each question
        */
-      for (let question of this.quiz.questions) {
+      for (let question of this.questions) {
         for (let answer of question.answers) {
           if (answer.isCorrect) {
             correctAnswers.push({
-              questionId: question.id,
               questionText: question.text,
-              answerId: answer.id,
-              text: answer.text
+             selectedAnswers: selectedAnswers,
+              correctAnswers: correctAnswers
             });
           }
 
@@ -143,10 +142,9 @@ export class QuizComponent implements OnInit {
             console.log('Includes statement');
             console.log(`Answer: ${answer.text}`);
             selectedAnswers.push({
-              questionId: question.id,
               questionText: question.text,
-              answerId: answer.id,
-              text: answer.text
+             selectedAnswers: selectedAnswers,
+              correctAnswers: correctAnswers
             });
           }
         }
@@ -184,26 +182,24 @@ export class QuizComponent implements OnInit {
         err => {
         console.log(err);
       }, () => {
-        /**
-         * 7. Open the dialog and pass the summary details to over
-         */
         const dialogRef = this.dialog.open(ResultsComponent, {
           data: {
-            quizSummary: this.quizSummary
+            quizSummary: this.quizSummary,
+            employeeId: this.employeeId,
           },
           disableClose: true,
           width: '800px'
         });
-
-        dialogRef.afterClosed().subscribe(quizResults => {
-          if (quizResults === 'confirm') {
+        console.log("data output check" + this.employeeId)
+        dialogRef.afterClosed().subscribe(results => {
+          if (results === 'confirm') {
             this.router.navigate(['/'])
           }
         });
       });
-    });
+    };
   }
-}
+
 
 
     /* this.quizResults = form;

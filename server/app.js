@@ -12,7 +12,7 @@ const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 const Quiz = require('./models/quizzes');
-const quizResults = require('./models/quiz-results');
+const result = require('./models/quiz-results');
 const Summary = require('./models/cumulative-summary')
 
 let app = express();
@@ -131,28 +131,28 @@ app.post('/api/results', function(req, res, next) {
     result: req.body.result
   };
 
-  quizResult.create(quizResults, function(err, quizResults) {
+result.create(result, function(err, result) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log(quizResult);
-      res.json(quizResults);
+      console.log(result);
+      res.json(result);
     }
   });
 });
 
 // Get all quizResults
 app.get("/api/result", function (req, res, next) {
-  quizResult.find({}, function (err, quizResults) {
+  result.find({}, function (err, result) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log(quizResults);
-      res.json(quizResults);
+      console.log(result);
+      res.json(result);
     }
-    return quizResults
+    //return results
   });
 });
 app.get('/api/summary/', function (req, res, next) {	

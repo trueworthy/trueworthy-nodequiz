@@ -15,7 +15,7 @@ let QuizResultSchema = new Schema({
 });
 //{collection: 'result'};
 
-module.exports = mongoose.model("quizResult", QuizResultSchema);
+module.exports = mongoose.model("result", QuizResultSchema);
 /*
 const mongoose = require('mongoose');
 
