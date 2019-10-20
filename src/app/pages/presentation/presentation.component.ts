@@ -20,14 +20,18 @@ export class PresentationComponent implements OnInit {
   presentationName: string;
   quizId: any;
   quizName: string;
+  employeeId: number
 
   constructor(private route: ActivatedRoute, private http: HttpClient,
               private presentationService: PresentationService, private router: Router,) {
+               // this.quizId = parseInt(this.route.snapshot.paramMap.get("id"), 10);
+
     this.presentationName = route.snapshot.paramMap.get('name');
     this.presentationService.getPresentations()
     .subscribe(res => {
       this.presentations = res;
       console.log(this.presentations);
+      console.log(this.employeeId)
       this.images = this.presentations.filter(p => p.name === this.presentationName)[0].images;
       console.log(this.images);
     })

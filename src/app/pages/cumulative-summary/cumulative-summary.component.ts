@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: summary page
+ */
+
+ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';

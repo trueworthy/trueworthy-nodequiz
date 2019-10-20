@@ -24,4 +24,8 @@ export class HeaderComponent implements OnInit {
   navHome() {
     this.router.navigate(["/dashboard"]);
   }
+
+  navResults() {
+    this.router.navigate(["/cumulative-summary"]);
+  }
 }

@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   cookieValue = "unknown";
   employeeId: any
 
-  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) {
+  constructor(private router: Router, private cookieService: CookieService, private cookie: CookieService,
+    private fb: FormBuilder, private http: HttpClient) {
   }/* this.createForm();
    }
    /*createForm() {
@@ -45,27 +46,29 @@ export class LoginComponent implements OnInit {
   login() {
     const employeeId = this.form.controls['employeeId'].value;
     console.log(employeeId);
-/*function List($scope, $http){
-  var insertMethod = 'POST';
-  $scope.showLabel = true;
+    /*function List($scope, $http){
+      var insertMethod = 'POST';
+      $scope.showLabel = true;
+    
+      $scope.save = function(){
+        var formData = {
+          "employeeId" : this.employeeId,
+          
+        }
+      };
+      $scope.List();
+    }*/
 
-  $scope.save = function(){
-    var formData = {
-      "employeeId" : this.employeeId,
-      
-    }
-  };
-  $scope.List();
-}*/
-   
 
     this.http.get('/api/employees/' + employeeId).subscribe(res => {
       if (res) {
-        this.cookieService.set('isAuthenticated', 'true', 1);
+        this.cookieService.set('isAuthenticated', 'true', 1)
         this.cookieService.set('employeeId', employeeId, 1)
         this.cookieValue = this.cookieService.get('employeeId')
+        this.cookie.set("employeeId", employeeId, 7);
+
         //localStorage.setItem('employeeId', JSON.stringify(this.employeeId));
-       // JSON.parse(localStorage.getItem('employeeId'));
+        // JSON.parse(localStorage.getItem('employeeId'));
         this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = "Invalid, please try again.";
