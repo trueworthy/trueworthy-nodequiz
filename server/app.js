@@ -155,6 +155,17 @@ app.get("/api/result", function (req, res, next) {
     return quizResults
   });
 });
+app.get('/api/summary/', function (req, res, next) {	
+  Summary.find(function (err, summary) {	
+    if (err) {	
+      console.log(err);	
+      return next(err);	
+    } else {	
+      console.log(summary);	
+      res.json(summary);	
+    }	
+  })	
+});
 
 /**
  * Creates an express server and listens on port 3000
