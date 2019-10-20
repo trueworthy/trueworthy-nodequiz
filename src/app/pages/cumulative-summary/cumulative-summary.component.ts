@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CumulativeSummaryComponent implements OnInit {
 
-  summary: any;
+  quizSummary: any;
   errorMessage: string;
 
 
@@ -21,7 +21,7 @@ export class CumulativeSummaryComponent implements OnInit {
 
     this.http.get('/api/summary/all').subscribe(res => {
       if (res) {
-        return this.summary = res;
+        return this.quizSummary = res;
       } else {
         return this.errorMessage = "ERROR";
       }
