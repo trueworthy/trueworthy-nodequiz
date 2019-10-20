@@ -20,22 +20,16 @@ export class ResultsComponent implements OnInit {
   selectedAnswers: any;
   employeeId: string;
 
-  constructor(private dialogRef: MatDialogRef<ResultsComponent>, @Inject(MAT_DIALOG_DATA) data, private router: Router,
+  constructor(private dialogRef: MatDialogRef<ResultsComponent>, @Inject(MAT_DIALOG_DATA) data, 
   private cookieService: CookieService) {
+    this.quizSummary = data.quizSummary;
+    console.log(data);
+    this.correctAnswers = this.quizSummary.correctAnswers;
+    this.selectedAnswers = this.quizSummary.selectedAnswers;
+    this.employeeId = this.cookieService.get('employeeId');
   }
+
   ngOnInit() {
-        //this.quizSummary = data.quizSummary;
-        console.log("data" + this.quizSummary);
-        this.correctAnswers = this.quizSummary.correctAnswers;
-        this.selectedAnswers = this.quizSummary.selectedAnswers;
-        this.employeeId = this.cookieService.get('employeeId');
-    console.log('Dialog Results: ' + this.quizSummary)
-
-  }
-
-  summary() {
-    this.dialogRef.close();
-    this.router.navigate(["/summary"]);
   }
 
 }

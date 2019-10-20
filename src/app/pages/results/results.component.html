@@ -1,16 +1,4 @@
-<div fxLayout="column" fxLayoutGap="10px" *ngFor="let answer of correctAnswers; let i = index">
-  <div *ngIf="selectedAnswers[i].answerId !== answer.answerId">
-    <mat-card fxFlex style="width: 50%; margin: 0 auto; margin-top: 5%;" class="mat-elevation-z8">
-      <mat-card-subtitle style="font-weight: lighter; text-align: center;">
-        Quiz Results for Employee: {{employeeId}}
-      </mat-card-subtitle>
-      <mat-card-content>
-        <h2>Score: {{score}}</h2><br>
-
-        <h3>Selected answer: {{ selectedAnswers[x].text}}<br></h3>
-        <h3> Correct answer: {{ answer.text}}</h3>
-
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+<mat-card-subtitle style="font-weight: lighter; text-align: center;">
+    Quiz Results for Employee: {{employeeId}}
+  </mat-card-subtitle>
+  

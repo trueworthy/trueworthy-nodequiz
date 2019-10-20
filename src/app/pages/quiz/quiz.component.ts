@@ -15,7 +15,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { error } from 'util';
 import * as moment from 'moment'
 import { ResultsComponent } from '../results/results.component';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-quiz',
@@ -32,10 +31,14 @@ export class QuizComponent implements OnInit {
   quizNameFromUrl: string;
   quizResults: any;
   q: any = [];
-  employeeId: number;
   qs: any = [];
   cumulativeSummary: {};
-  quizSummary = {};
+  quizSummary: {
+    question: any
+    selectedAnswer: any
+    correctAnswer: any
+  };
+  employeeId: number;
 
 
   constructor(private route: ActivatedRoute, private cookieService: CookieService, private location: Location, 
@@ -45,9 +48,6 @@ export class QuizComponent implements OnInit {
     this.employeeId = parseInt(this.cookieService.get('employeeId'))
     //this.cookieValue = this.cookieService.get('employeeId')
     console.log(this.employeeId + " employee number")
-
-
-
     //this.employeeId = this.cookieService.get('employeeId');
 
     //this.employeeId = parseInt(this.cookieService.get('employeeId'), 10);
@@ -58,8 +58,6 @@ export class QuizComponent implements OnInit {
       //this.quizNameFromUrl = route.snapshot.paramMap.get('id');  quizName: {{this.quizNameFromUrl}}
 
       console.log(this.quizzes);
-      console.log('2Begin Form Submission');
-
     })
   }
   ngOnInit() {
@@ -69,12 +67,9 @@ export class QuizComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-  
   onSubmit(form) {
-    console.log('1Begin Form Submission');
 
     // score calculator
-    console.log("F: " + form);
     const totalPossiblePoints = 100;
     this.quiz = this.quizzes.filter(q => q.id === this.quizId);
     const questionCount = this.quiz.questions;
@@ -85,37 +80,28 @@ export class QuizComponent implements OnInit {
     let correctRunningTotal = 0;
     let selectedAnswerIds = [];
     let selectedisCorrectProp = [];
-      // let correctAnswers = [];
-     // let selectedAnswers = [];
-
+    console.log("Q: " + this.questions);
 
     // FORM
+
     this.quizResults = form;
     this.quizResults['employeeId'] = this.employeeId;
     this.quizResults['quizId'] = this.quizId;
+    //console.log('form ' + form);
+
+
     // save quiz results to database
-    this.http.post('/api/result/', {
+    this.http.post('/api/results/', {
       employeeId: this.employeeId,
       quizId: this.quizId,
       quizResults: JSON.stringify(form)
     }).subscribe( res => {
+
     },
       err => {
       console.log(err);
     }, () => {
-      console.log("POST complete");
-    });
 
-    this.quizResults = form;
-      this.quizResults['employeeId'] = this.employeeId;
-      this.quizResults['quizId'] = this.quizId;
-      //this.displayResults = JSON.stringify(this.quizResults);
-      //console.log('form ' + form);
-
-     for (let x = 0; x < selectedisCorrectProp.length; x++) {
-        if (selectedisCorrectProp[x] === 'true') {
-          correctRunningTotal += 1;
-        }
       for (const prop in this.quizResults) {
         if (this.quizResults.hasOwnProperty(prop)) {
 
@@ -129,18 +115,10 @@ export class QuizComponent implements OnInit {
         }
       }
 
-      for(let i = 0; i < selectedAnswerIds.length; i++){
-
-        for(let x = 0; x < selectedisCorrectProp.length; x++){
-  
-          if( selectedAnswerIds[i] === selectedisCorrectProp[x]){
-  
-            correctRunningTotal += 1;
-            console.log('selectedAnswers: ' + selectedAnswerIds[i] + ' correctAnswers: ' + selectedisCorrectProp[x] + ' correctRunningTotal: ' + correctRunningTotal);
-  
-          }
+      for (let x = 0; x < selectedisCorrectProp.length; x++) {
+        if (selectedisCorrectProp[x] === 'true') {
+          correctRunningTotal += 1;
         }
-  
       }
       quizScore = correctRunningTotal * pointsPerQuestions;
 
@@ -149,8 +127,8 @@ export class QuizComponent implements OnInit {
 
       /**
        * Loop over the quiz.questions to get the selected answer and correct answer for each question
-      */
-      for (let question of this.questions) {
+       */
+      for (let question of this.quiz.questions) {
         for (let answer of question.answers) {
           if (answer.isCorrect) {
             correctAnswers.push({
@@ -173,20 +151,20 @@ export class QuizComponent implements OnInit {
           }
         }
       }
- 
+
       /**
        * 5. Prepare the summary object for transport
-       
+       */
       this.quizSummary['quizId'] = this.quizId;
       this.quizSummary['quizName'] = this.quiz.name;
       this.quizSummary['score'] = quizScore;
       this.quizSummary['correctAnswers'] = correctAnswers;
       this.quizSummary['selectedAnswers'] = selectedAnswers;
-*/
+
       /**
        * 6. Create the cumulative summary object and insert into the database
        */
-     /* this.cumulativeSummary = {
+      this.cumulativeSummary = {
         employeeId: this.employeeId,
         quizId: this.quizId,
         quizName: this.quiz.name,
@@ -205,10 +183,10 @@ export class QuizComponent implements OnInit {
       },
         err => {
         console.log(err);
-      }, () => */{
-   
-          //7. Open the dialog and pass the summary details to over
-         
+      }, () => {
+        /**
+         * 7. Open the dialog and pass the summary details to over
+         */
         const dialogRef = this.dialog.open(ResultsComponent, {
           data: {
             quizSummary: this.quizSummary
@@ -222,9 +200,10 @@ export class QuizComponent implements OnInit {
             this.router.navigate(['/'])
           }
         });
-      };
-    };
+      });
+    });
   }
+}
 
 
     /* this.quizResults = form;
@@ -242,4 +221,4 @@ export class QuizComponent implements OnInit {
    
     onSubmit() {
      alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
-     }*/}
+     }*/

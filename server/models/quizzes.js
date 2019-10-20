@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 let quizSchema = mongoose.Schema({
   quizId: String,
   quizName: String,
+  score: Number,
+  results: Number,
   cumulativeScore: String
 
 });

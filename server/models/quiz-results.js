@@ -13,7 +13,7 @@ let QuizResultSchema = new Schema({
   score: { type: String },
   result: { type: String }
 });
-{collection: 'results'};
+//{collection: 'result'};
 
 module.exports = mongoose.model("QuizResult", QuizResultSchema);
 /*

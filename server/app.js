@@ -124,29 +124,27 @@ app.get('/api/quizzes/:id', function (req, res, next) {
 /*************** Quiz Results API *******************************************/
 
 //Create Quiz Result
-app.post("/api/result", function (req, res, next) {
-  const quizResult = {
+app.post('/api/results', function(req, res, next) {
+  const quizResults = {
     employeeId: req.body.employeeId,
-    quizId: req.body.quizId,
-    score: req.body.score,
-    date: req.body.date,
-    quizResults: req.body.quizResults
+    quizName: req.body.quizName,
+    result: req.body.result
   };
 
-  QuizResult.create(quizResults, function (err, result) {
+  quizResult.create(quizResults, function(err, quizResults) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log(result);
-      res.json(result);
+      console.log(quizResult);
+      res.json(quizResults);
     }
   });
 });
 
 // Get all quizResults
-app.get("/api/results", function (req, res, next) {
-  QuizResult.find({}, function (err, quizResults) {
+app.get("/api/result", function (req, res, next) {
+  quizResult.find({}, function (err, quizResults) {
     if (err) {
       console.log(err);
       return next(err);
