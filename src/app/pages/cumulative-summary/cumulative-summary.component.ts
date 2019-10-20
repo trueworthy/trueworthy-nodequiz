@@ -19,7 +19,7 @@ export class CumulativeSummaryComponent implements OnInit {
   constructor(private route: ActivatedRoute, private cookieService: CookieService, private http: HttpClient, private router: Router, private fb: FormBuilder, private location: Location) {
 
 
-    this.http.get('/api/summary/all').subscribe(res => {
+    this.http.get('/api/summary/').subscribe(res => {
       if (res) {
         return this.quizSummary = res;
       } else {
