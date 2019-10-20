@@ -133,7 +133,7 @@ app.post("/api/result", function (req, res, next) {
     quizResults: req.body.quizResults
   };
 
-  results.create(quizResults, function (err, result) {
+  QuizResult.create(quizResults, function (err, result) {
     if (err) {
       console.log(err);
       return next(err);
