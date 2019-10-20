@@ -12,13 +12,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CumulativeSummaryComponent implements OnInit {
 
-  cumulativeSummary: any;
-  displayedColumns: string[] = ['employeeId', 'quizName', 'dateTaken', 'score'];
+  summary: any;
+  errorMessage: string;
 
-  constructor(private http: HttpClient) {
-    this.http.get('/api/cumulative-summary').subscribe(res => {
-      this.cumulativeSummary = res;
-    });
+
+  constructor(private route: ActivatedRoute, private cookieService: CookieService, private http: HttpClient, private router: Router, private fb: FormBuilder, private location: Location) {
+
+
+    this.http.get('/api/summary/all').subscribe(res => {
+      if (res) {
+        return this.summary = res;
+      } else {
+        return this.errorMessage = "ERROR";
+      }
+
+    })
+
   }
 
   ngOnInit() {

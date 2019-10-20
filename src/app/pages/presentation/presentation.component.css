@@ -3,3 +3,9 @@ button{
     font-size: 25px !important;
     text-align: center  !important;
 }
+
+::ng-deep .mat-card{
+
+    border: 55px !important;
+    border-color: red !important;
+   }

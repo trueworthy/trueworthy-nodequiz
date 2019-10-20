@@ -3,15 +3,19 @@
  * Description: store data from employee quizzes
  */
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let quizResultsSchema = mongoose.Schema({
-  quizId: String,
-  quizName: String,
-  result: String
-})
+let QuizResultSchema = new Schema({
+  employeeId: { type: String },
+  quizId: { type: String },
+  date: { type: String },
+  score: { type: String },
+  result: { type: String }
+});
+{collection: 'results'};
 
-module.exports = mongoose.model('quizResults', quizResultsSchema);
+module.exports = mongoose.model("QuizResult", QuizResultSchema);
 /*
 const mongoose = require('mongoose');
 

@@ -12,8 +12,8 @@
             <div fxLayout="column">
 
                 <!-- Quiz form -->
-                <form #form="ngForm" (ngSubmit)="onSubmit(form.value); ">
-                    <div *ngFor="let question of questions">
+                <form #quizForm="ngForm" (ngSubmit)="onSubmit(quizForm.value); quizForm.reset();">
+                        <div *ngFor="let question of questions">
                         <mat-card class="mat-elevation-z0">
                             <mat-card-content>
 

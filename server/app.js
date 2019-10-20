@@ -93,6 +93,7 @@ app.post('/api/quizzes', function (req, res, next) {
   const quiz = {
     quizId: req.body.employeeId,
     quizName: req.body.quizName,
+    quizDescription: req.body.quizDescription,
     cumulativeScore: req.body.cumulativeScore
   };
 
@@ -120,62 +121,42 @@ app.get('/api/quizzes/:id', function (req, res, next) {
   })
 });
 
+/*************** Quiz Results API *******************************************/
 
-app.post('/api/result', function (req, res, next) {
-  const quizResults = {
+//Create Quiz Result
+app.post("/api/result", function (req, res, next) {
+  const quizResult = {
     employeeId: req.body.employeeId,
     quizId: req.body.quizId,
+    score: req.body.score,
+    date: req.body.date,
     quizResults: req.body.quizResults
   };
 
-  quizResults.create(result, function (err, result) {
+  results.create(quizResults, function (err, result) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      //console.log(result);
+      console.log(result);
       res.json(result);
     }
   });
 });
 
-
-/************************ Summary API ************************ */
-//Create Summary Result
-/*app.post('/api/summary', function(req, res, next) {
-  const summary = {
-    employeeId: req.body.employeeId,
-    quizId: req.body.quizId,
-    quizName: req.body.quizName,
-    dateTaken: req.body.dateTaken,
-    score: req.body.score
-  };
-
-  Summary.create(summary, function(err, summary) {
+// Get all quizResults
+app.get("/api/results", function (req, res, next) {
+  QuizResult.find({}, function (err, quizResults) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log(summary);
-      res.json(summary);
+      console.log(quizResults);
+      res.json(quizResults);
     }
+    return quizResults
   });
 });
-
-*/
-//Get all Quizzes
-app.get('/api/summary/all', function (req, res, next) {
-  Summary.find(function (err, summary) {
-    if (err) {
-      console.log(err);
-      return next(err);
-    } else {
-      console.log(summary);
-      res.json(summary);
-    }
-  })
-});
-
 
 /**
  * Creates an express server and listens on port 3000
