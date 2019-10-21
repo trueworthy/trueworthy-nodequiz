@@ -1,4 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: dialog pop up box for results
+ */
+
+ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CookieService} from "ngx-cookie-service";
 @Component({

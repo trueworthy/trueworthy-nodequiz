@@ -1,6 +1,16 @@
 /**
  * Author: Lea Trueworthy
  * Description: carousel function and route to quiz
+ * 
+ References: PrimeNG https://www.primefaces.org/primeng/#/
+CookieServe https://www.npmjs.com/package/ngx-cookie-service
+Angular Material https://blog.angular-university.io/angular-material-dialog/
+Angular Color https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+Heroku https://dashboard.heroku.com/apps
+Professor Krasso https://github.com/buwebdev/web-450
+w3schools https://www.w3schools.com/howto/howto_css_images_side_by_side.asp
+Mongodb https://www.mongodb.com/
+Person App http://personapp.io/
  */
 
  import { HttpClient } from '@angular/common/http';

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: validator
+ */
+
+ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-auth-layout',

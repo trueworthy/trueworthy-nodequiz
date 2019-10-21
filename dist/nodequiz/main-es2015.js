@@ -371,7 +371,7 @@ module.exports = "<div fxLayout=\"column\" *ngIf=\"images\">\n    <mat-card>\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\">\n    <!-- root mat card -->\n    <mat-card fxFlex style=\"width: 50%; margin: 0 auto; margin-top: 5%;\" class=\"mat-elevation-z8\">\n        <mat-card-title style=\"text-align: center; font-weight: lighter;\" class=\"mat-headline\">\n            {{ quiz.name }}\n        </mat-card-title>\n\n        <br />\n        <!-- root mat card content -->\n        <mat-card-content *ngIf=\"questions\">\n            <!-- flex-layout column -->\n            <div fxLayout=\"column\">\n\n                <!-- Quiz form -->\n                <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value); form.reset();\">\n                        <div *ngFor=\"let question of questions\">\n                        <mat-card class=\"mat-elevation-z0\">\n                            <mat-card-content>\n\n                                <div fxLayout=\"column\">\n                                    <!-- questions -->\n                                    <mat-list>\n                                        <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n\n                                            <p>{{question.text}}</p>\n                                        </div>\n                                    </mat-list>\n                                    <br />\n\n                                    <!-- answers -->\n                                    <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n                                        <label>Answers:</label>\n                                        <div fxLayout=\"column\" fxLayoutGap=\"10px\">\n                                            <div *ngFor=\"let answer of question.answers\"\n                                                style=\"flex-direction: column;\">\n                                                <input [(ngModel)]=\"qs[question.id]\" [checked]=\"qs[question.id]\"\n                                                    value=\"{{answer.id}};{{answer.isCorrect}}\" name=\"q{{question.id}}\"\n                                                    type=\"radio\" />\n                                                {{answer.text}}\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>\n                            </mat-card-content>\n                        </mat-card>\n                    </div>\n\n                    <!-- mat card actions -->\n                    <br />\n                    <mat-card-actions>\n                        <button type=\"submit\" fxFlex mat-raised-button color=\"primary\">Submit</button>\n                    </mat-card-actions>\n                    <br />\n                </form>\n                <!-- end form -->\n\n            </div>\n            <!-- end flex-layout column -->\n        </mat-card-content>\n        <!-- end root mat card content -->\n    </mat-card>\n\n    <div>\n        <button color=\"accent\" mat-button (click)=\"goBack()\">Back</button>\n    </div>"
+module.exports = "<div fxLayout=\"column\">\n    <!-- root mat card -->\n    <mat-card fxFlex style=\"width: 50%; margin: 0 auto; margin-top: 5%;\" class=\"mat-elevation-z8\">\n        <mat-card-title style=\"text-align: center; font-weight: lighter;\" class=\"mat-headline\">\n            {{ quiz.name }}\n        </mat-card-title>\n\n        <br />\n        <!-- root mat card content -->\n        <mat-card-content *ngIf=\"questions\">\n            <!-- flex-layout column -->\n            <div fxLayout=\"column\">\n\n                <!-- Quiz form -->\n                <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value); \">\n                        <div *ngFor=\"let question of questions\">\n                        <mat-card class=\"mat-elevation-z0\">\n                            <mat-card-content>\n\n                                <div fxLayout=\"column\">\n                                    <!-- questions -->\n                                    <mat-list>\n                                        <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n\n                                            <p>{{question.text}}</p>\n                                        </div>\n                                    </mat-list>\n                                    <br />\n\n                                    <!-- answers -->\n                                    <div fxLayout=\"row\" fxLayoutGap=\"10px\">\n                                        <label>Answers:</label>\n                                        <div fxLayout=\"column\" fxLayoutGap=\"10px\">\n                                            <div *ngFor=\"let answer of question.answers\"\n                                                style=\"flex-direction: column;\">\n                                                <input [(ngModel)]=\"qs[question.id]\" [checked]=\"qs[question.id]\"\n                                                    value=\"{{answer.id}};{{answer.isCorrect}}\" name=\"q{{question.id}}\"\n                                                    type=\"radio\" />\n                                                {{answer.text}}\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>\n                            </mat-card-content>\n                        </mat-card>\n                    </div>\n\n                    <!-- mat card actions -->\n                    <br />\n                    <mat-card-actions>\n                        <button type=\"submit\" fxFlex mat-raised-button color=\"primary\" >Submit</button>\n                    </mat-card-actions>\n                    <br />\n                </form>\n                <!-- end form -->\n\n            </div>\n            <!-- end flex-layout column -->\n        </mat-card-content>\n        <!-- end root mat card content -->\n    </mat-card>\n\n    <div>\n        <button color=\"accent\" mat-button (click)=\"goBack()\">Back</button>\n    </div>"
 
 /***/ }),
 
@@ -382,7 +382,7 @@ module.exports = "<div fxLayout=\"column\">\n    <!-- root mat card -->\n    <ma
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card-subtitle style=\"font-weight: lighter; text-align: center;\">\n    Quiz Results for Employee: {{employeeId}}\n  </mat-card-subtitle>\n  "
+module.exports = "<div fxLayout=\"column\" fxLayoutGap=\"10px\\\" *ngFor=\"let answer of correctAnswers; let i = index\">\n\n  <div *ngIf=\"selectedAnswers[i].answerId !== answer.answerId\">\n\n    <mat-card fxFlex style=\"width: 50%; margin: 0 auto; margin-top: 5%;\" class=\"mat-elevation-z8\">\n      <mat-card-subtitle style=\"font-weight: lighter; text-align: center;\">\n        Quiz Results for Employee: {{employeeId}}\n       </mat-card-subtitle>\n\n      <mat-card-content>\n        Selected answer: {{ selectedAnswers[i].text}}<br>\n        Correct answer: {{ answer.text}}\n      </mat-card-content>\n\n    </mat-card>\n\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -735,9 +735,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/ngx-cookie-service.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /**
  * Author: Lea Trueworthy
  * Description: summary page
@@ -745,17 +742,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
 let CumulativeSummaryComponent = class CumulativeSummaryComponent {
-    constructor(route, cookieService, http, router, fb, location) {
-        this.route = route;
-        this.cookieService = cookieService;
+    constructor(http) {
         this.http = http;
-        this.router = router;
-        this.fb = fb;
-        this.location = location;
+    }
+    ngOnInit() {
         this.http.get('/api/summary/').subscribe(res => {
             if (res) {
                 return this.quizSummary = res;
@@ -765,16 +756,9 @@ let CumulativeSummaryComponent = class CumulativeSummaryComponent {
             }
         });
     }
-    ngOnInit() {
-    }
 };
 CumulativeSummaryComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
-    { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__["CookieService"] },
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] },
-    { type: Location }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
 ];
 CumulativeSummaryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1029,7 +1013,7 @@ NotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "button{\n    width: 100%  !important;\n    font-size: 25px !important;\n    text-align: center  !important;\n}\n\n::ng-deep .mat-card{\n\n    border: 55px !important;\n    border-color: red !important;\n   }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJlc2VudGF0aW9uL3ByZXNlbnRhdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksdUJBQXVCO0lBQ3ZCLDBCQUEwQjtJQUMxQiw4QkFBOEI7QUFDbEM7O0FBRUE7O0lBRUksdUJBQXVCO0lBQ3ZCLDRCQUE0QjtHQUM3QiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3ByZXNlbnRhdGlvbi9wcmVzZW50YXRpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJ1dHRvbntcbiAgICB3aWR0aDogMTAwJSAgIWltcG9ydGFudDtcbiAgICBmb250LXNpemU6IDI1cHggIWltcG9ydGFudDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXIgICFpbXBvcnRhbnQ7XG59XG5cbjo6bmctZGVlcCAubWF0LWNhcmR7XG5cbiAgICBib3JkZXI6IDU1cHggIWltcG9ydGFudDtcbiAgICBib3JkZXItY29sb3I6IHJlZCAhaW1wb3J0YW50O1xuICAgfSJdfQ== */"
+module.exports = "button{\n    width: 100%  !important;\n    font-size: 25px !important;\n    text-align: center  !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJlc2VudGF0aW9uL3ByZXNlbnRhdGlvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksdUJBQXVCO0lBQ3ZCLDBCQUEwQjtJQUMxQiw4QkFBOEI7QUFDbEMiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wcmVzZW50YXRpb24vcHJlc2VudGF0aW9uLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJidXR0b257XG4gICAgd2lkdGg6IDEwMCUgICFpbXBvcnRhbnQ7XG4gICAgZm9udC1zaXplOiAyNXB4ICFpbXBvcnRhbnQ7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyICAhaW1wb3J0YW50O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -1051,6 +1035,16 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Author: Lea Trueworthy
  * Description: carousel function and route to quiz
+ *
+ References: PrimeNG https://www.primefaces.org/primeng/#/
+CookieServe https://www.npmjs.com/package/ngx-cookie-service
+Angular Material https://blog.angular-university.io/angular-material-dialog/
+Angular Color https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+Heroku https://dashboard.heroku.com/apps
+Professor Krasso https://github.com/buwebdev/web-450
+w3schools https://www.w3schools.com/howto/howto_css_images_side_by_side.asp
+Mongodb https://www.mongodb.com/
+Person App http://personapp.io/
  */
 
 
@@ -1201,21 +1195,20 @@ let QuizComponent = class QuizComponent {
         this.router = router;
         this.q = [];
         this.qs = [];
-        //this.quizId = (this.route.snapshot.paramMap.get('id'))
-        //this.quiz = parseInt(this.route.snapshot.paramMap.get("id"))
+        this.quizId = (this.route.snapshot.paramMap.get('id'));
+        this.quiz = parseInt(this.route.snapshot.paramMap.get("id"));
         this.employeeId = parseInt(this.cookieService.get('employeeId'));
-        this.quiz = parseInt(this.route.snapshot.paramMap.get("id"), 10);
-        this.quizId = parseInt(this.route.snapshot.paramMap.get("id"), 10);
         //this.cookieValue = this.cookieService.get('employeeId')
+        console.log(this.employeeId + " employee number");
         //this.employeeId = this.cookieService.get('employeeId');
         this.employeeId = parseInt(this.cookieService.get('employeeId'), 10);
         console.log(this.employeeId + " employee number");
         this.quizService.getQuizzes().subscribe(res => {
             this.quizzes = res;
-            this.questions = this.quizzes.filter(q => q.quizId === this.quizId)[0];
+            this.questions = this.quizzes.filter(q => q.name === this.quizId)[0].questions;
             //this.quizNameFromUrl = route.snapshot.paramMap.get('id');  quizName: {{this.quizNameFromUrl}}
-            console.log("questions " + this.questions);
-            console.log(this.quizzes);
+            console.table("questions " + this.questions);
+            console.table(this.quizzes);
         });
     }
     ngOnInit() {
@@ -1241,10 +1234,10 @@ let QuizComponent = class QuizComponent {
         this.results['quizId'] = this.quizId;
         //console.log('form ' + form);
         // save quiz results to database
-        /* this.http.post('/api/results/', {
+        /* this.http.post('/api/result/', {
            employeeId: this.employeeId,
            quizId: this.quizId,
-           results: JSON.stringify(form)
+           quizResults: JSON.stringify(form)
          }).subscribe( res => {
      
          },
@@ -1325,7 +1318,7 @@ let QuizComponent = class QuizComponent {
             const dialogRef = this.dialog.open(_results_results_component__WEBPACK_IMPORTED_MODULE_9__["ResultsComponent"], {
                 data: {
                     quizSummary: this.quizSummary,
-                    employeeId: this.employeeId,
+                    employeeId: this.employeeId
                 },
                 disableClose: true,
                 width: '800px'
@@ -1470,7 +1463,7 @@ let ResultsComponent = class ResultsComponent {
         this.dialogRef = dialogRef;
         this.cookieService = cookieService;
         this.quizSummary = data.quizSummary;
-        console.log(data);
+        console.log("data" + data);
         this.correctAnswers = this.quizSummary.correctAnswers;
         this.selectedAnswers = this.quizSummary.selectedAnswers;
         this.employeeId = this.cookieService.get('employeeId');
@@ -1519,6 +1512,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthLayoutComponent", function() { return AuthLayoutComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/**
+ * Author: Lea Trueworthy
+ * Description: validator
+ */
 
 
 let AuthLayoutComponent = class AuthLayoutComponent {
@@ -1729,6 +1726,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm2015/dialog.js");
 /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/ngx-cookie-service.js");
+/**
+ * Author: Lea Trueworthy
+ * Description: dialog pop up box for results
+ */
 
 
 

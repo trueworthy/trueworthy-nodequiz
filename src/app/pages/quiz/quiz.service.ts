@@ -31,6 +31,7 @@ export class QuizService {
 ngOnInit() {
 
 }
+
   getQuizzes() {
     return this.http.get('./assets/questions.json');
   }

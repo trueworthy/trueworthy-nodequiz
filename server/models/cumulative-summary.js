@@ -1,4 +1,9 @@
-const mongoose = require('mongoose');
+/**
+ * Author: Lea Trueworthy
+ * Description: summary 
+ */
+
+ const mongoose = require('mongoose');
 
 let summarySchema = mongoose.Schema({
   employeeId: String,

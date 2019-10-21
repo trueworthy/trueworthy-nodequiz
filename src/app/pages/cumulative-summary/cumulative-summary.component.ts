@@ -3,7 +3,7 @@
  * Description: summary page
  */
 
- import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -21,8 +21,11 @@ export class CumulativeSummaryComponent implements OnInit {
   errorMessage: string;
 
 
-  constructor(private route: ActivatedRoute, private cookieService: CookieService, private http: HttpClient, private router: Router, private fb: FormBuilder, private location: Location) {
+  constructor(private http: HttpClient) {
 
+  }
+
+  ngOnInit() {
 
     this.http.get('/api/summary/').subscribe(res => {
       if (res) {
@@ -31,11 +34,7 @@ export class CumulativeSummaryComponent implements OnInit {
         return this.errorMessage = "ERROR";
       }
 
-    })
-
-  }
-
-  ngOnInit() {
+    });
   }
 
 }
