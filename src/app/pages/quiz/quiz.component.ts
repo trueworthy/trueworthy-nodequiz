@@ -1,6 +1,6 @@
 /**
  * Author: Lea Trueworthy
- * Description: Quiz page guide
+ * Description: Quiz page guide including answer selections
  */
 
 import { HttpClient } from '@angular/common/http';

@@ -2,7 +2,6 @@
     {
         "quizId": "101",
         "name": "html-css",
-        "description": "....",
         "questions": [
             {
                 "id": "1",
